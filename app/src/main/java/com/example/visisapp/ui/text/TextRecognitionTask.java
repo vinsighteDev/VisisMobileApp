@@ -170,8 +170,6 @@ public class TextRecognitionTask extends AsyncTask<byte[], String, String>
             // Build final string
             recognitionText = stringResult.toString();
 
-            // Set the text to be the built string
-           // textView.setText(recognitionText);
 
             // Sends text to Text to speech
             mainActivity.speak(recognitionText);

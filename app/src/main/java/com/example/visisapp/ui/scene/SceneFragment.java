@@ -24,12 +24,10 @@ public class SceneFragment extends Fragment {
         sceneViewModel =
                 ViewModelProviders.of(this).get(SceneViewModel.class);
         View root = inflater.inflate(R.layout.fragment_scene, container, false);
-        //final TextView textView = root.findViewById(R.id.text_scene);
         sceneViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
 
-                //textView.setText(s);
             }
         });
         return root;

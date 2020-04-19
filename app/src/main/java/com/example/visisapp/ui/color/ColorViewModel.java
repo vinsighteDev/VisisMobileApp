@@ -10,7 +10,6 @@ public class ColorViewModel extends ViewModel
 
     public ColorViewModel() {
         mText = new MutableLiveData<>();
-        //mText.setValue("This is color fragment");
     }
 
     public LiveData<String> getText() {

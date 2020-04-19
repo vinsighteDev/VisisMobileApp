@@ -1,14 +1,13 @@
 package com.example.visisapp;
 
-import android.content.Intent;
+
 import android.graphics.Bitmap;
-import android.net.Uri;
+
 import android.os.AsyncTask;
-import android.view.View;
+
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 
 import com.example.visisapp.ui.color.ColorRecognitionTask;
 import com.example.visisapp.ui.object.ObjectRecognitionTask;
@@ -17,11 +16,10 @@ import com.example.visisapp.ui.text.TextRecognitionTask;
 
 
 import java.io.ByteArrayOutputStream;
-import java.util.List;
+
 
 // This class contains runs the API's recognition functions
-public class Recognizer
-{
+public class Recognizer {
     // Initializing UI text view component
     private TextView textView;
     private Button sendButton;
@@ -30,16 +28,13 @@ public class Recognizer
     private MainActivity mainActivity;
 
     // Class Constructor
-    public Recognizer(MainActivity mainActivity)
-    {
+    public Recognizer(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
-//        textView = mainActivity.findViewById(R.id.txt_result);
-//        sendButton = mainActivity.findViewById(R.id.send_button);
+
     }
 
     // Microsoft Computer Vision API for Text Recognition (2ND CHOICE)
-    public void runTextRecognition2(Bitmap bitmap)
-    {
+    public void runTextRecognition2(Bitmap bitmap) {
         // Create output stream byte array
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         // Compress given Bitmap to output stream and keep quality 100%
@@ -53,8 +48,7 @@ public class Recognizer
     }
 
     // Microsoft Computer Vision API for Scene Recognition (ONLY CHOICE)
-    public void runSceneRecognition(Bitmap bitmap)
-    {
+    public void runSceneRecognition(Bitmap bitmap) {
         // Create output stream byte array
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         // Compress given Bitmap to output stream and keep quality 100%
@@ -70,8 +64,7 @@ public class Recognizer
     }
 
     // Microsoft Computer Vision API for Object Recognition (1ST CHOICE)
-    public void runObjectRecognition(Bitmap bitmap)
-    {
+    public void runObjectRecognition(Bitmap bitmap) {
         // Create output stream byte array
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         // Compress given Bitmap to output stream and keep quality 100%
@@ -87,8 +80,7 @@ public class Recognizer
     }
 
     // Microsoft Computer Vision API for Color Recognition (ONLY CHOICE)
-    public void runColorRecognition(Bitmap bitmap)
-    {
+    public void runColorRecognition(Bitmap bitmap) {
         // Create output stream byte array
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         // Compress given Bitmap to output stream and keep quality 100%

@@ -1,26 +1,22 @@
 package com.example.visisapp;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
+
 import android.os.Bundle;
-import android.speech.RecognitionListener;
-import android.speech.RecognizerIntent;
+
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
+
 import android.widget.Switch;
-import android.widget.TextView;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
+
 import androidx.core.view.GestureDetectorCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -42,15 +38,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements CameraKitEventListener, TextToSpeech.OnInitListener
-{
+public class MainActivity extends AppCompatActivity implements CameraKitEventListener, TextToSpeech.OnInitListener {
     // UI Components
     private CameraView cameraView;
     private Button cameraButton;
     private BottomNavigationView bottomNavigationView;
-    private Button sendButton;
-    private Button speechButton;
-    private TextView textView;
     private Switch flashSwitch;
     private GestureDetectorCompat mDetector;
 
@@ -78,8 +70,7 @@ public class MainActivity extends AppCompatActivity implements CameraKitEventLis
     // Initialize Main Activity View, Navigation Bar,send button, and Camera.
     private void initUI() {
         setContentView(R.layout.bottom_nav);
-        //mDetector = new GestureDetectorCompat(this, new MyGestureListener());
-        //sendButton = findViewById(R.id.send_button);
+
         flashSwitch = findViewById(R.id.flashSwitch);
 
         flashSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -90,22 +81,9 @@ public class MainActivity extends AppCompatActivity implements CameraKitEventLis
             }
         });
 
-        //textView = findViewById(R.id.txt_result);
-        //speechButton = findViewById(R.id.speech_button);
-
-//        speechButton.setOnClickListener((view -> {
-//            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-//            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-//                    RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-//            mySpeechRecognizer.startListening(intent);
-//            if (textToSpeech != null) {
-//                textToSpeech.stop();
-//            }
-//        }));
 
         initNav();
         initCamera();
-        //initializeSpeechRecognizer();
     }
 
     // Initialize Navigation Bar
@@ -135,73 +113,38 @@ public class MainActivity extends AppCompatActivity implements CameraKitEventLis
         cameraButton = findViewById(R.id.cameraBtn);
         cameraView = findViewById(R.id.camView);
 
-//        cameraView.setOnTouchListener(new View.OnTouchListener() {
-//            private GestureDetector gestureDetector = new GestureDetector(MainActivity.this, new GestureDetector.SimpleOnGestureListener() {
-//                @Override
-//                public void onLongPress(MotionEvent e) {
-//                    Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-//                    intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-//                            RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-//                    mySpeechRecognizer.startListening(intent);
-//                    if (textToSpeech != null) {
-//                        textToSpeech.stop();
-//                    }
-//                }
-//            });
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                gestureDetector.onTouchEvent(event);
-//                return true;
-//            }
-//        });
 
-
-        // Button Listener;
-        cameraButton.setOnClickListener(new View.OnClickListener()
-        {
+        cameraButton.setOnClickListener(new View.OnClickListener() {
             // When button is pressed, image is capture.
             // It also stops text to speech if available
             // Removes send button if needed.
             // Change camera button's text
             // if color recognition is selected, set flash to on
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 // check if speech still there, if it is stop it
-                if (textToSpeech != null)
-                {
+                if (textToSpeech != null) {
                     textToSpeech.stop();
                 }
 
-                // check if send button is there, if it is remove it
-//                if(sendButton.getVisibility() == View.VISIBLE)
-//                {
-//                    sendButton.setVisibility(View.INVISIBLE);
-//                }
 
-                // Start camera view
                 cameraView.start();
 
                 // if button is stop, change text
-                if (cameraButton.getText().equals("Stop Scan"))
-                {
+                if (cameraButton.getText().equals("Stop Scan")) {
                     speak("Stopping text scan");
                     cameraButton.setText("Scan Text");
                     //speechButton.setVisibility(View.VISIBLE);
-                }
-                else // else change it to stop
+                } else // else change it to stop
                 {
                     speak("Scanning");
                     cameraButton.setText("Stop Scan");
                 }
 
-                if (flashSwitch.isChecked())
-                {
+                if (flashSwitch.isChecked()) {
                     // Turn flash ON
                     cameraView.setFlash(CameraKit.Constants.FLASH_ON);
-                }
-                else
-                {
+                } else {
                     // Turn flash OFF
                     cameraView.setFlash(CameraKit.Constants.FLASH_OFF);
                 }
@@ -231,102 +174,6 @@ public class MainActivity extends AppCompatActivity implements CameraKitEventLis
         textToSpeech = new TextToSpeech(this, this);
     }
 
-//    private void initializeSpeechRecognizer() {
-//        if(SpeechRecognizer.isRecognitionAvailable(this)){
-//            mySpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
-//            mySpeechRecognizer.setRecognitionListener(new RecognitionListener() {
-//                @Override
-//                public void onReadyForSpeech(Bundle bundle) {
-//
-//                }
-//
-//                @Override
-//                public void onBeginningOfSpeech() {
-//
-//                }
-//
-//                @Override
-//                public void onRmsChanged(float v) {
-//
-//                }
-//
-//                @Override
-//                public void onBufferReceived(byte[] bytes) {
-//
-//                }
-//
-//                @Override
-//                public void onEndOfSpeech() {
-//
-//                }
-//
-//                @Override
-//                public void onError(int i) {
-//
-//                }
-//
-//                @Override
-//                public void onResults(Bundle bundle) {
-//                    List<String> results = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-//                    processResult(results.get(0));
-//                }
-//
-//                @Override
-//                public void onPartialResults(Bundle bundle) {
-//
-//                }
-//
-//                @Override
-//                public void onEvent(int i, Bundle bundle) {
-//
-//                }
-//            });
-//        }
-//    }
-
-//    private void processResult(String command) {
-//        command = command.toLowerCase();
-//
-//        // Check if switch is on or off
-//        if (flashSwitch.isChecked())
-//        {
-//            // Turn flash ON
-//            cameraView.setFlash(CameraKit.Constants.FLASH_ON);
-//        }
-//        else
-//        {
-//            // Turn flash FF
-//            cameraView.setFlash(CameraKit.Constants.FLASH_OFF);
-//        }
-//
-//        speech_recog = true;
-//
-//        if (command.contains("text")) {
-//            voice_text_recog = true;
-//            // Capture picture
-//            cameraView.captureImage();
-//        }
-//        else if (command.contains("stop")) {
-//            textToSpeech.stop();
-//        }
-//        else if (command.contains("flash") && command.contains("on")) {
-//            speech_recog = false;
-//            // Turn flash ON
-//            cameraView.setFlash(CameraKit.Constants.FLASH_ON);
-//            flashSwitch.setChecked(true);
-//        }
-//        else if (command.contains("flash") && command.contains("off")) {
-//            speech_recog = false;
-//            // Turn flash FF
-//            cameraView.setFlash(CameraKit.Constants.FLASH_OFF);
-//            flashSwitch.setChecked(false);
-//        }
-//        else {
-//            speech_recog = false;
-//            speak("Didn't understand what you said, try again.");
-//            textView.setText("Didn't understand what you said, try again.");
-//        }
-//    }
 
     // On Image taken, Convert it to a bitmap and run the corresponding API
     @Override
@@ -342,22 +189,18 @@ public class MainActivity extends AppCompatActivity implements CameraKitEventLis
         if (!speech_recog) {
             // Stop camera preview while recognition is happening
             cameraView.stop();
-            // Hide the speech button
-            //speechButton.setVisibility(View.INVISIBLE);
-
-            // make send button visible
-            //sendButton.setVisibility(View.VISIBLE);
 
             // if item selected is text, then run text recognition
             if (number == R.id.navigation_text) {
                 recognizer.runTextRecognition2(bitmap);
-            }if (number == R.id.navigation_scene){
+            }
+            if (number == R.id.navigation_scene) {
                 recognizer.runSceneRecognition(bitmap);
             }
-            if (number == R.id.navigation_object){
+            if (number == R.id.navigation_object) {
                 recognizer.runObjectRecognition(bitmap);
             }
-            if (number == R.id.navigation_color){
+            if (number == R.id.navigation_color) {
                 recognizer.runColorRecognition(bitmap);
             }
         } else {
@@ -416,46 +259,12 @@ public class MainActivity extends AppCompatActivity implements CameraKitEventLis
     }
 
 
-    // Saves bitmap as PNG to the app's cache directory. Returns Uri of the saved file
-//    public Uri saveImage(Bitmap image) {
-//        // Get image folder
-//        File imagesFolder = new File(getCacheDir(), "images");
-//        // create uri to store
-//        Uri uri = null;
-//
-//        try {
-//            // Creates directory and parent directories
-//            imagesFolder.mkdirs();
-//            // create image file
-//            File file = new File(imagesFolder, "shared_image.png");
-//
-//            // creates outstream of file
-//            FileOutputStream stream = new FileOutputStream(file);
-//            // compress bitmap into stream
-//            image.compress(Bitmap.CompressFormat.PNG, 90, stream);
-//
-//            // flush and close stream
-//            stream.flush();
-//            stream.close();
-//
-//            // get URI for file
-//            uri = FileProvider.getUriForFile(this, "com.mydomain.fileprovider", file);
-//
-//        } catch (IOException e)
-//        {
-//            e.printStackTrace();
-//        }
-//
-//        return uri;
-//    }
-
     // When Activity is resumed, start the camera, change button text
     @Override
     public void onResume() {
         super.onResume();
         cameraView.start();
         cameraButton.setText("Tap to scan");
-//        speechButton.setVisibility(View.VISIBLE);
     }
 
     // When Activity is Paused, stop the camera and text to speech, hide send button
@@ -465,7 +274,6 @@ public class MainActivity extends AppCompatActivity implements CameraKitEventLis
         if (textToSpeech != null) {
             textToSpeech.stop();
         }
-        // sendButton.setVisibility(View.INVISIBLE);
         super.onPause();
     }
 

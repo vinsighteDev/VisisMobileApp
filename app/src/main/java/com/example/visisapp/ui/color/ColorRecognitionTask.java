@@ -38,7 +38,6 @@ public class ColorRecognitionTask<X,Y,Z>  extends AsyncTask<byte[], String, Stri
     {
         this.mainActivity = mainActivity;
         this.progressDialog = new ProgressDialog(mainActivity);
-        //textView = mainActivity.findViewById(R.id.txt_result);
     }
 
     // Invokes the UI thread before the task is executed
@@ -164,15 +163,10 @@ public class ColorRecognitionTask<X,Y,Z>  extends AsyncTask<byte[], String, Stri
                 // Build final string
                 recognitionText = stringResult.toString();
 
-                // send text to database
-
-                // Set the text to be the built string
-                //textView.setText(recognitionText);
             }
             else
             {
                 recognitionText = "No colors Recognized";
-                //textView.setText("No colors Recognized");
             }
             resultString = recognitionText;
             // Sends text to Text to speech

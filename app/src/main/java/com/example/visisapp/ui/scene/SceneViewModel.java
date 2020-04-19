@@ -10,7 +10,6 @@ public class SceneViewModel extends ViewModel {
 
     public SceneViewModel() {
         mText = new MutableLiveData<>();
-        //mText.setValue("This is scene fragment");
     }
 
     public LiveData<String> getText() {

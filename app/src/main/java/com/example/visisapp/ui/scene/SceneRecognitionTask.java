@@ -39,7 +39,6 @@ public class SceneRecognitionTask<X,Y,Z> extends AsyncTask<byte[], String, Strin
     {
         this.mainActivity = mainActivity;
         this.progressDialog = new ProgressDialog(mainActivity);
-        //textView = mainActivity.findViewById(R.id.txt_result);
     }
 
     // Invokes the UI thread before the task is executed
@@ -170,15 +169,10 @@ public class SceneRecognitionTask<X,Y,Z> extends AsyncTask<byte[], String, Strin
                 // Build final string
                 recognitionText = stringResult.toString();
 
-                // send text to database
-
-                // Set the text to be the built string
-               // textView.setText(recognitionText);
             }
             else
             {
                 recognitionText = "No scenes Recognized";
-               // textView.setText("No scenes Recognized");
             }
 
             resultString = recognitionText;

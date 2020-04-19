@@ -23,12 +23,9 @@ public class ObjectFragment extends Fragment {
         objectViewModel =
                 ViewModelProviders.of(this).get(ObjectViewModel.class);
         View root = inflater.inflate(R.layout.fragment_object, container, false);
-        //final TextView textView = root.findViewById(R.id.text_object);
         objectViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-
-                //textView.setText(s);
             }
         });
         return root;

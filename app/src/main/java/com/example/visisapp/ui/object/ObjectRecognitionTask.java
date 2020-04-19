@@ -164,16 +164,11 @@ public class ObjectRecognitionTask<X,Y,Z>  extends AsyncTask<byte[], String, Str
                 if (stringResult.length() == 0)
                 {
                     stringResult.append("Sorry, I'm not sure what the object is");
-                    //textView.setText("Sorry, I'm not sure what the object is");
                 }
 
                 // Build final string
                 recognitionText = stringResult.toString();
 
-                // send text to database
-
-                // Set the text to be the built string
-               // textView.setText(recognitionText);
             }
             else
             {

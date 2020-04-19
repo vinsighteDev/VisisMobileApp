@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">VisisApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_text">Text</string>
+    <string name="title_scene">Scene</string>
+    <string name="title_object">Object</string>
+    <string name="title_color">Color</string>
+    <string name="title_recognize">Recognize</string>
+</resources>

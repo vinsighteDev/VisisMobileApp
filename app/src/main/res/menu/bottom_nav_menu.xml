@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_text"
+        android:icon="@drawable/ic_text_fields_black_24dp"
+        android:title="@string/title_text" />
+
+    <item
+        android:id="@+id/navigation_scene"
+        android:icon="@drawable/ic_nature_people_black_24dp"
+        android:title="@string/title_scene" />
+
+    <item
+        android:id="@+id/navigation_object"
+        android:icon="@drawable/ic_style_black_24dp"
+        android:title="@string/title_object" />
+
+    <item
+        android:id="@+id/navigation_color"
+        android:icon="@drawable/ic_color_lens_black_24dp"
+        android:title="@string/title_color" />
+
+
+</menu>

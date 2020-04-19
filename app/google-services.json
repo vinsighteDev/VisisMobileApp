@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "98209347697",
+    "firebase_url": "https://visisapp-188aa.firebaseio.com",
+    "project_id": "visisapp-188aa",
+    "storage_bucket": "visisapp-188aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98209347697:android:5e6ec373226cf3acdd83d0",
+        "android_client_info": {
+          "package_name": "com.example.visisapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98209347697-l5mh9reihnmtrqo17817t1jej1s972np.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.visisapp",
+            "certificate_hash": "98216286e35b784192ad8bed7e410ce40287b3b0"
+          }
+        },
+        {
+          "client_id": "98209347697-4p9mc359idhsknmm1ur0l6aus2lt5h24.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuYZo0nZqpOY1oGD3ae2Y57DeiljiqWHg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "98209347697-4p9mc359idhsknmm1ur0l6aus2lt5h24.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

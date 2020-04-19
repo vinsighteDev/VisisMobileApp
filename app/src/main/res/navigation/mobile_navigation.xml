@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_text">
+
+    <fragment
+        android:id="@+id/navigation_text"
+        android:name="com.example.visisapp.ui.text.TextFragment"
+        android:label="@string/title_text"
+        tools:layout="@layout/fragment_text" />
+
+    <fragment
+        android:id="@+id/navigation_scene"
+        android:name="com.example.visisapp.ui.scene.SceneFragment"
+        android:label="@string/title_scene"
+        tools:layout="@layout/fragment_scene" />
+
+    <fragment
+        android:id="@+id/navigation_object"
+        android:name="com.example.visisapp.ui.object.ObjectFragment"
+        android:label="@string/title_object"
+        tools:layout="@layout/fragment_object" />
+    <fragment
+        android:id="@+id/navigation_color"
+        android:name="com.example.visisapp.ui.color.ColorFragment"
+        android:label="@string/title_color"
+        tools:layout="@layout/fragment_color" />
+
+</navigation>
